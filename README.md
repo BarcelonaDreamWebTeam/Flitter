@@ -32,26 +32,25 @@ npm run init-db
 
 ## API Documentation 
 
-### Receive the Ad list:
-GET /api/anuncios
+### GET /api/anuncios - Receive the Ad list
 
 **Parameters**:
 
-| **Parameter** | **DataType** | **Description**    |
-|---------------|--------------|--------------------|
-| nombre        | string       | nombre del anuncio |
-| venta         | bool         |                    |
-| precio        | number       |                    |
-| tags          | array        |                    |
-| skip          | number       |                    |
-| limit         | number       |                    |
-| fields        | string       |                    |
-| sort          | string       |                    |
+| **Parameter** | **DataType** | **Description**                                    |
+|---------------|--------------|----------------------------------------------------|
+| nombre        | string       | Ad name (unique)                                   |
+| venta         | bool         | it indicates if the item is on sale                |
+| precio        | number       | the price of the item                              |
+| tags          | array        | key words of the ad                                |
+| skip          | number       | return results after a certain number of documents |
+| limit         | number       | maximum number of results to be returned           |
+| fields        | string       | fields to fetch                                    |
+| sort          | string       | sort Ads                                           |
 
 **Response messsages**: <br />
-200 Success
-404 Not found
-500 Internal Server Error
+- 200 Success
+- 404 Not found
+- 500 Internal Server Error
 
 
 **Example**: <br />
