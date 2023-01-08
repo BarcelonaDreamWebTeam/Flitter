@@ -4,30 +4,30 @@
 
 Deploy:
 
-'''sh
+```sh
 npm install
-'''
+```
 
 Start the applications in production with:
 
-'''sh
+```sh
 npm start 
-'''
+```
 
 Start mongo DB:
 Download Mongo DB from https://www.mongodb.com/ and execute mongod. In windows execute mongod.exe, while in Mac and Linux with "./bin/mongod --dbpath ./data"
 
 Start the applications in development with:
 
-'''sh
+```sh
 npm run dev 
-'''
+```
 
 Load initial data to database:
 
-'''sh
+```sh
 npm run init-db
-'''
+```
 
 
 ## API Documentation 
@@ -50,58 +50,36 @@ GET /api/anuncios
 
 **Response messsages**:
 200 Success
-404 not found
+404 Not found
+500 Internal Server Error
 
 
 **Example**:
+Request:
+/api/anuncios?venta=true&limit=3&skip=0&fields=nombre%20precio&sort=precio
+
+Response:
+```json
 {
-    "results": [
-        {
-            "_id": "63b34fa205dce84ee1958152",
-            "nombre": "bicicleta",
-            "venta": true,
-            "precio": 230.15,
-            "foto": "bici.jpg",
-            "tags": [
-                "lifestyle",
-                "motor"
-            ]
-        },
-        {
-            "_id": "63b351e205dce84ee1958153",
-            "venta": true,
-            "precio": 50,
-            "foto": "iphone.png",
-            "tags": [
-                "lifestyle",
-                "mobile"
-            ],
-            "nombre": "iPhone 3GS"
-        },
-        {
-            "_id": "63b3523205dce84ee1958154",
-            "nombre": "tesla",
-            "venta": true,
-            "precio": 35000,
-            "foto": "tesla.png",
-            "tags": [
-                "lifestyle",
-                "auto"
-            ]
-        },
-        {
-            "_id": "63b352d305dce84ee1958155",
-            "nombre": "sofá amarillo",
-            "venta": false,
-            "precio": 300,
-            "foto": "sofá.png",
-            "tags": [
-                "decoracion",
-                "casa"
-            ]
-        }
-    ]
+   "results": [
+      {
+         "_id": "63b351e205dce84ee1958153",
+         "precio": 50,
+         "nombre": "iPhone 3GS"
+      },
+      {
+         "_id": "63b34fa205dce84ee1958152",
+         "nombre": "bicicleta",
+         "precio": 230.15
+      },
+      {
+         "_id": "63b3523205dce84ee1958154",
+         "nombre": "tesla",
+         "precio": 35000
+      }
+   ]
 }
+```
 
 ### Find Ad by Id
 GET /api/anuncios/{AdId}
@@ -110,6 +88,7 @@ GET /api/anuncios/{AdId}
 Request: GET /api/anuncios/63b34fa205dce84ee1958152
 
 Response:
+```json
 {
     "results": [
         {
@@ -125,6 +104,7 @@ Response:
         },
     ]
 }
+```
 
 ### Delete an Ad 
 DELETE /api/anuncios/{AdId}
