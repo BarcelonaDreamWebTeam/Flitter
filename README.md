@@ -48,15 +48,15 @@ GET /api/anuncios
 | fields        | string       |                    |
 | sort          | string       |                    |
 
-**Response messsages**:
+**Response messsages**: <br />
 200 Success
 404 Not found
 500 Internal Server Error
 
 
-**Example**:
-Request:
-/api/anuncios?venta=true&limit=3&skip=0&fields=nombre%20precio&sort=precio
+**Example**: <br />
+Request: <br />
+/api/anuncios?venta=true&limit=3&skip=0&fields=nombre%20precio&sort=precio <br />
 
 Response:
 ```json
