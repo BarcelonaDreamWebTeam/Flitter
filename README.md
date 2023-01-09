@@ -34,24 +34,23 @@ npm run init-db
 
 ### GET /api/anuncios - Receive the Ad list
 
-**Parameters**:
+**Parameters**: 
 
-| **Parameter** | **DataType** | **Description**                                    |
-|---------------|--------------|----------------------------------------------------|
-| nombre        | string       | Ad name (unique)                                   |
-| venta         | bool         | it indicates if the item is on sale                |
-| precio        | number       | the price of the item                              |
-| tags          | array        | key words of the ad                                |
-| skip          | number       | return results after a certain number of documents |
-| limit         | number       | maximum number of results to be returned           |
-| fields        | string       | fields to fetch                                    |
-| sort          | string       | sort Ads                                           |
+| **Parameter** | **DataType** | **Description**                                    | **Parameter type** |
+|---------------|--------------|----------------------------------------------------|--------------------|
+| nombre        | string       | Ad name (unique)                                   | form               |
+| venta         | bool         | it indicates if the item is on sale                | form               |
+| precio        | number       | the price of the item                              | form               |
+| tags          | array        | key words of the ad                                | form               |
+| skip          | number       | return results after a certain number of documents | form               |
+| limit         | number       | maximum number of results to be returned           | form               |
+| fields        | string       | fields to fetch                                    | form               |
+| sort          | string       | sort Ads                                           | form               |
 
 **Response messsages**: <br />
 - 200 Success
 - 404 Not found
 - 500 Internal Server Error
-
 
 **Example**: <br />
 Request: <br />
@@ -80,13 +79,23 @@ Response:
 }
 ```
 
-### Find Ad by Id
-GET /api/anuncios/{AdId}
+### GET /api/anuncios/{AdId} - Find Ad by Id
 
-**Example**:
-Request: GET /api/anuncios/63b34fa205dce84ee1958152
+**Parameters**: 
 
-Response:
+| **Parameter** | **DataType** | **Description** | **Parameter type** |
+|---------------|--------------|-----------------|--------------------|
+| _id (required)| string       | Ad id           | path               |
+
+**Response messsages**: <br />
+- 200 Success
+- 404 Not found
+- 500 Internal Server Error
+
+**Example**: <br />
+Request: GET /api/anuncios/63b34fa205dce84ee1958152 <br />
+
+Response: 
 ```json
 {
     "results": [
@@ -105,20 +114,105 @@ Response:
 }
 ```
 
-### Delete an Ad 
-DELETE /api/anuncios/{AdId}
+### DELETE /api/anuncios/{AdId} - Delete an Ad 
+
+**Parameters**: 
+
+| **Parameter** | **DataType** | **Description** | **Parameter type** |
+|---------------|--------------|-----------------|--------------------|
+| _id (required)| string       | Ad id           | path               |
+
+**Response messsages**: <br />
+- 200 Success
+- 404 Not found
+- 500 Internal Server Error
 
 **Example**:
 Request: DELETE /api/anuncios/63b34fa205dce84ee1958152
 
 Response:
+```json
 
-### Update an Ad 
-DELETE /api/anuncios/{AdId}
+```
 
-### Add a new Ad 
-DELETE /api/anuncios/{AdId}
+### PUT /api/anuncios/{AdId} - Update an Ad 
 
+**Parameters**: <br />
+
+| **Parameter** | **DataType** | **Description**                     | **Parameter type**                |
+|---------------|--------------|-------------------------------------|-----------------------------------|
+| _id(required  | string       | Ad id.                              | path                              |
+
+
+Parameter content-type: application/x-www-form-urlencoded
+
+| **Parameter** | **DataType** | **Description**                     | **Parameter type**                |
+|---------------|--------------|-------------------------------------|-----------------------------------|
+| nombre        | string       | Ad name (unique)                    | application/x-www-form-urlencoded |
+| venta         | bool         | it indicates if the item is on sale | application/x-www-form-urlencoded |
+| precio        | number       | the price of the item               | application/x-www-form-urlencoded |
+| tags          | array        | key words of the ad                 | application/x-www-form-urlencoded |
+| foto          | string       | picture of the item                 | application/x-www-form-urlencoded |
+
+**Response messsages**: <br />
+- 200 Success
+- 404 Not found
+- 500 Internal Server Error
+
+**Example**: <br />
+Request: GET /api/anuncios/63b34fa205dce84ee1958152 <br />
+<img width="451" alt="image" src="https://user-images.githubusercontent.com/112942984/211225778-295a27f6-0deb-4c46-a142-5a8774777bf3.png">
+
+Response:
+```json
+{
+    "result": {
+        "_id": "63bb598e29a77f096d8c52a2",
+        "nombre": "cama",
+        "venta": true,
+        "tags": [],
+        "__v": 0
+    }
+}
+```
+
+
+
+### POST /api/anuncios - Add a new Ad 
+
+**Parameters**: <br />
+Parameter content-type: application/x-www-form-urlencoded
+
+| **Parameter** | **DataType** | **Description**                     | **Parameter type**                |
+|---------------|--------------|-------------------------------------|-----------------------------------|
+| nombre        | string       | Ad name (unique)                    | application/x-www-form-urlencoded |
+| venta         | bool         | it indicates if the item is on sale | application/x-www-form-urlencoded |
+| precio        | number       | the price of the item               | application/x-www-form-urlencoded |
+| tags          | array        | key words of the ad                 | application/x-www-form-urlencoded |
+| foto          | string       | picture of the item                 | application/x-www-form-urlencoded |
+
+**Response messsages**: <br />
+- 200 Success
+- 404 Not found
+- 500 Internal Server Error
+
+**Example**:
+Request: POST /api/anuncios
+<img width="467" alt="image" src="https://user-images.githubusercontent.com/112942984/211225507-93029165-bd3f-4dbf-a9b0-4779635cd1f4.png">
+
+Response:
+
+```json
+{
+    "result": {
+        "nombre": "laptop mac",
+        "venta": false,
+        "tags": [],
+        "_id": "63bb598e29a77f096d8c52a2",
+        "__v": 0
+    }
+}
+```
 
 
 
