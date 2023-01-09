@@ -128,7 +128,7 @@ Response:
 - 404 Not found
 - 500 Internal Server Error
 
-**Example**:
+**Example**:  <br />
 Request: <br />
 DELETE /api/anuncios/63b34fa205dce84ee1958152
 
