@@ -139,15 +139,11 @@ Response:
 
 **Parameters**: <br />
 
-| **Parameter** | **DataType** | **Description**                     | **Parameter type**                |
-|---------------|--------------|-------------------------------------|-----------------------------------|
-| _id(required  | string       | Ad id.                              | path                              |
-
-
 Parameter content-type: application/x-www-form-urlencoded
 
 | **Parameter** | **DataType** | **Description**                     | **Parameter type**                |
 |---------------|--------------|-------------------------------------|-----------------------------------|
+| _id(required) | string       | Ad id                               | path                              |
 | nombre        | string       | Ad name (unique)                    | application/x-www-form-urlencoded |
 | venta         | bool         | it indicates if the item is on sale | application/x-www-form-urlencoded |
 | precio        | number       | the price of the item               | application/x-www-form-urlencoded |
@@ -167,7 +163,7 @@ Response:
 ```json
 {
     "result": {
-        "_id": "63bb598e29a77f096d8c52a2",
+        "_id": "63b34fa205dce84ee1958152",
         "nombre": "cama",
         "venta": true,
         "tags": [],
