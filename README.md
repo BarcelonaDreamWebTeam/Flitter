@@ -36,16 +36,16 @@ npm run init-db
 
 **Parameters**: 
 
-| **Parameter** | **DataType** | **Description**                                    | **Parameter type** |
-|---------------|--------------|----------------------------------------------------|--------------------|
-| nombre        | string       | Ad name (unique)                                   | form               |
-| venta         | bool         | it indicates if the item is on sale                | form               |
-| precio        | number       | the price of the item                              | form               |
-| tags          | array        | key words of the ad                                | form               |
-| skip          | number       | return results after a certain number of documents | form               |
-| limit         | number       | maximum number of results to be returned           | form               |
-| fields        | string       | fields to fetch                                    | form               |
-| sort          | string       | sort Ads                                           | form               |
+| **Parameter** | **DataType** | **Description**                                                     | **Parameter type** |
+|---------------|--------------|---------------------------------------------------------------------|--------------------|
+| nombre        | string       | Ad name (unique)                                                    | form               |
+| venta         | bool         | it indicates if the item is on sale                                 | form               |
+| precio        | number       | the price of the item                                               | form               |
+| tags          | array        | key words of the ad. Possible values: motor, mobile, lifestyle, work| form               |
+| skip          | number       | return results after a certain number of documents                  | form               |
+| limit         | number       | maximum number of results to be returned                            | form               |
+| fields        | string       | fields to fetch (nombre, venta, etc.)                               | form               |
+| sort          | string       | sort Ads by nombre, venta, etc.                                     | form               |
 
 **Response messsages**: <br />
 - 200 Success
@@ -143,14 +143,14 @@ Response:
 
 Parameter content-type: application/x-www-form-urlencoded
 
-| **Parameter** | **DataType** | **Description**                     | **Parameter type**                |
-|---------------|--------------|-------------------------------------|-----------------------------------|
-| _id(required) | string       | Ad id                               | path                              |
-| nombre        | string       | Ad name (unique)                    | application/x-www-form-urlencoded |
-| venta         | bool         | it indicates if the item is on sale | application/x-www-form-urlencoded |
-| precio        | number       | the price of the item               | application/x-www-form-urlencoded |
-| tags          | array        | key words of the ad                 | application/x-www-form-urlencoded |
-| foto          | string       | picture of the item                 | application/x-www-form-urlencoded |
+| **Parameter** | **DataType** | **Description**                                                     | **Parameter type**                |
+|---------------|--------------|---------------------------------------------------------------------|-----------------------------------|
+| _id(required) | string       | Ad id                                                               | path                              |
+| nombre        | string       | Ad name (unique)                                                    | application/x-www-form-urlencoded |
+| venta         | bool         | it indicates if the item is on sale                                 | application/x-www-form-urlencoded |
+| precio        | number       | the price of the item                                               | application/x-www-form-urlencoded |
+| tags          | array        | key words of the ad. Possible values: motor, mobile, lifestyle, work| application/x-www-form-urlencoded |
+| foto          | string       | picture of the item                                                 | application/x-www-form-urlencoded |
 
 **Response messsages**: <br />
 - 200 Success
@@ -182,13 +182,13 @@ Response:
 **Parameters**: <br />
 Parameter content-type: application/x-www-form-urlencoded
 
-| **Parameter** | **DataType** | **Description**                     | **Parameter type**                |
-|---------------|--------------|-------------------------------------|-----------------------------------|
-| nombre        | string       | Ad name (unique)                    | application/x-www-form-urlencoded |
-| venta         | bool         | it indicates if the item is on sale | application/x-www-form-urlencoded |
-| precio        | number       | the price of the item               | application/x-www-form-urlencoded |
-| tags          | array        | key words of the ad                 | application/x-www-form-urlencoded |
-| foto          | string       | picture of the item                 | application/x-www-form-urlencoded |
+| **Parameter** | **DataType** | **Description**                                                     | **Parameter type**                |
+|---------------|--------------|---------------------------------------------------------------------|-----------------------------------|
+| nombre        | string       | Ad name (unique)                                                    | application/x-www-form-urlencoded |
+| venta         | bool         | it indicates if the item is on sale                                 | application/x-www-form-urlencoded |
+| precio        | number       | the price of the item                                               | application/x-www-form-urlencoded |
+| tags          | array        | key words of the ad. Possible values: motor, mobile, lifestyle, work| application/x-www-form-urlencoded |
+| foto          | string       | picture of the item                                                 | application/x-www-form-urlencoded |
 
 **Response messsages**: <br />
 - 200 Success
