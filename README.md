@@ -54,7 +54,7 @@ npm run init-db
 
 **Example**: <br />
 Request: <br />
-/api/anuncios?venta=true&limit=3&skip=0&fields=nombre%20precio&sort=precio <br />
+GET /api/anuncios?venta=true&limit=3&skip=0&fields=nombre%20precio&sort=precio <br />
 
 Response:
 ```json
@@ -93,7 +93,8 @@ Response:
 - 500 Internal Server Error
 
 **Example**: <br />
-Request: GET /api/anuncios/63b34fa205dce84ee1958152 <br />
+Request: <br />
+GET /api/anuncios/63b34fa205dce84ee1958152 <br />
 
 Response: 
 ```json
@@ -128,7 +129,8 @@ Response:
 - 500 Internal Server Error
 
 **Example**:
-Request: DELETE /api/anuncios/63b34fa205dce84ee1958152
+Request: <br />
+DELETE /api/anuncios/63b34fa205dce84ee1958152
 
 Response:
 ```json
@@ -156,7 +158,8 @@ Parameter content-type: application/x-www-form-urlencoded
 - 500 Internal Server Error
 
 **Example**: <br />
-Request: GET /api/anuncios/63b34fa205dce84ee1958152 <br />
+Request: <br />
+GET /api/anuncios/63b34fa205dce84ee1958152 <br />
 <img width="451" alt="image" src="https://user-images.githubusercontent.com/112942984/211225778-295a27f6-0deb-4c46-a142-5a8774777bf3.png">
 
 Response:
@@ -192,9 +195,9 @@ Parameter content-type: application/x-www-form-urlencoded
 - 404 Not found
 - 500 Internal Server Error
 
-**Example**:
-Request: POST /api/anuncios
-<img width="467" alt="image" src="https://user-images.githubusercontent.com/112942984/211225507-93029165-bd3f-4dbf-a9b0-4779635cd1f4.png">
+**Example**: <br />
+Request: POST /api/anuncios <br />
+<img width="467" alt="image" src="https://user-images.githubusercontent.com/112942984/211225507-93029165-bd3f-4dbf-a9b0-4779635cd1f4.png"> <br />
 
 Response:
 
