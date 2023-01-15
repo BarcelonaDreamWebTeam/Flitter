@@ -3,6 +3,8 @@
 const express = require('express');
 const router = express.Router();
 const Anuncio = require('../../models/Anuncio');
+const createError = require('http-errors');
+
 
 // GET /api/anuncios
 router.get('/', async (req, res, next) => {
@@ -70,6 +72,24 @@ router.put ('/:id', async (req, res, next) => {
     try{
         const id = req.params.id;
         const anuncioData = req.body;
+
+        const tags = anuncioData.tags 
+
+        if(tags){
+            if (typeof tags === "object"){
+                for (let index = 0; index < tags.length; index++) {
+                    if (tags[index] != "lifestyle" && tags[index] != "motor" && tags[index] != "work" && tags[index] != "mobile") {
+                        return next(createError(500));
+                    }
+                }
+            }
+            else if (typeof tags === "string"){
+                if (tags != "lifestyle" && tags != "motor" && tags != "work" && tags != "mobile") {
+                    return next(createError(500));
+                }
+            }
+        }
+
         const anuncioActualizado = await Anuncio.findOneAndUpdate( {_id: id}, anuncioData, {
             new: true
         });
@@ -100,6 +120,18 @@ router.post ('/', async (req, res, next) => {
         const anuncioData = req.body;
 
         const anuncio = new Anuncio(anuncioData);
+        const tags = anuncio.tags 
+
+
+        if (tags){
+
+            for (let index = 0; index < tags.length; index++) {
+                if (tags[index] != "lifestyle" && tags[index] != "motor" && tags[index] != "work" && tags[index] != "mobile") {
+                    return next(createError(500));
+                }
+            }
+        }
+
         const anuncioNuevo = await anuncio.save();
         res.json({result: anuncioNuevo});
     
