@@ -6,7 +6,8 @@ var logger = require('morgan');
 
 //connexion a mongoose
 require('./lib/connectMongoose');
-require('./routes/api/anuncios');
+require('./routes/api/users');
+
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -24,10 +25,12 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 //rutas de mi api
-app.use('/api/anuncios', require('./routes/api/anuncios'))
+app.use('/api/users', require('./routes/api/users'))
+app.use("/api/protected", require('./routes/api/protected'));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

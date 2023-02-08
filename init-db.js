@@ -3,7 +3,7 @@
 const readline = require('readline');
 
 // cargamos los modelos
-const Agente = require('./models/Anuncio');
+const User = require('./models/User');
 
 async function main() {
 
@@ -17,7 +17,7 @@ async function main() {
   const connection = require('./lib/connectMongoose')
 
   // inicializar 
-  await initAnuncios();
+  await initUsers();
 
   // desconectamos de la base de datos
   connection.close();
@@ -25,18 +25,20 @@ async function main() {
 
 main().catch(err => console.log('Hubo un error', err));
 
-async function initAnuncios() {
+async function initUsers() {
   // borrar 
-  const result = await Anuncio.deleteMany();
-  console.log(`Eliminados ${result.deletedCount} anuncios.`);
+  const result = await User.deleteMany();
+  console.log(`Eliminados ${result.deletedCount} users.`);
 
   // crear 
-  const inserted = await Anuncio.insertMany([
-    { nombre: "bicileta", venta: false, precio: 230.15, foto: "bici.jpg", tags: ["lifestyle","bici"] },
-    { nombre: "iPhone", venta: false, precio: 600, foto: "iphone.jpg", tags: ["mobile"]},
-    { nombre: "tesla", venta: false, precio: 35000, foto: "tesla.jpg", tags: ["motor"] },
+  const inserted = await User.insertMany([
+    { email: "emily@gmail.com", password: "$2a$12$jMQX5Ll/2kL5Af.LsAEruuY02xfgODq3nyDwfQKDd2hi.EcKkj8D2" },
+    { email: "dani@gmail.com", password: "$2a$12$jMQX5Ll/2kL5Af.LsAEruuY02xfgODq3nyDwfQKDd2hi.EcKkj8D2" },
+    { email: "ewe@gmail.com", password: "$2a$12$jMQX5Ll/2kL5Af.LsAEruuY02xfgODq3nyDwfQKDd2hi.EcKkj8D2" },
+    { email: "nati@gmail.com", password: "$2a$12$jMQX5Ll/2kL5Af.LsAEruuY02xfgODq3nyDwfQKDd2hi.EcKkj8D2" },
+    { email: "helen@gmail.com", password: "$2a$12$jMQX5Ll/2kL5Af.LsAEruuY02xfgODq3nyDwfQKDd2hi.EcKkj8D2" },
   ]);
-  console.log(`Creados ${inserted.length} anuncios.`)
+  console.log(`Creados ${inserted.length} users.`)
 }
 
 function preguntaSiNo(texto) {

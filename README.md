@@ -1,4 +1,4 @@
-# Nodepop
+# Flitter
 
 ## Setup
 
@@ -32,186 +32,59 @@ npm run init-db
 
 ## API Documentation 
 
-### GET /api/anuncios - Receive the Ad list
+### POST /api/users/login
 
-**Parameters**: 
+Example
 
-| **Parameter** | **DataType** | **Description**                                                     | **Parameter type** |
-|---------------|--------------|---------------------------------------------------------------------|--------------------|
-| nombre        | string       | Ad name (unique)                                                    | form               |
-| venta         | bool         | it indicates if the item is on sale                                 | form               |
-| precio        | number       | the price of the item                                               | form               |
-| tags          | array        | key words of the ad. Possible values: motor, mobile, lifestyle, work| form               |
-| skip          | number       | return results after a certain number of documents                  | form               |
-| limit         | number       | maximum number of results to be returned                            | form               |
-| fields        | string       | fields to fetch (nombre, venta, etc.)                               | form               |
-| sort          | string       | sort Ads by nombre, venta, etc.                                     | form               |
-
-**Response messsages**: <br />
-- 200 Success
-- 404 Not found
-- 500 Internal Server Error
-
-**Example**: <br />
-Request: <br />
-GET /api/anuncios?venta=true&limit=3&skip=0&fields=nombre%20precio&sort=precio <br />
-
-Response:
-```json
+Body:
 {
-   "results": [
-      {
-         "_id": "63b351e205dce84ee1958153",
-         "precio": 50,
-         "nombre": "iPhone 3GS"
-      },
-      {
-         "_id": "63b34fa205dce84ee1958152",
-         "nombre": "bicicleta",
-         "precio": 230.15
-      },
-      {
-         "_id": "63b3523205dce84ee1958154",
-         "nombre": "tesla",
-         "precio": 35000
-      }
-   ]
+    "email" : "emily@gmail.com"
+    "password" : "hola"
 }
-```
-
-### GET /api/anuncios/{AdId} - Find Ad by Id
-
-**Parameters**: 
-
-| **Parameter** | **DataType** | **Description** | **Parameter type** |
-|---------------|--------------|-----------------|--------------------|
-| _id (required)| string       | Ad id           | path               |
-
-**Response messsages**: <br />
-- 200 Success
-- 404 Not found
-- 500 Internal Server Error
-
-**Example**: <br />
-Request: <br />
-GET /api/anuncios/63b34fa205dce84ee1958152 <br />
-
-Response: 
-```json
-{
-    "results": [
-        {
-            "_id": "63b34fa205dce84ee1958152",
-            "nombre": "bicicleta",
-            "venta": true,
-            "precio": 230.15,
-            "foto": "bici.jpg",
-            "tags": [
-                "lifestyle",
-                "motor"
-            ]
-        },
-    ]
-}
-```
-
-### DELETE /api/anuncios/{AdId} - Delete an Ad 
-
-**Parameters**: 
-
-| **Parameter** | **DataType** | **Description** | **Parameter type** |
-|---------------|--------------|-----------------|--------------------|
-| _id (required)| string       | Ad id           | path               |
-
-**Response messsages**: <br />
-- 200 Success
-- 404 Not found
-- 500 Internal Server Error
-
-**Example**:  <br />
-Request: <br />
-DELETE /api/anuncios/63b34fa205dce84ee1958152
 
 Response:
-```json
-
-```
-
-### PUT /api/anuncios/{AdId} - Update an Ad 
-
-**Parameters**: <br />
-
-Parameter content-type: application/x-www-form-urlencoded
-
-| **Parameter** | **DataType** | **Description**                                                     | **Parameter type**                |
-|---------------|--------------|---------------------------------------------------------------------|-----------------------------------|
-| _id(required) | string       | Ad id                                                               | path                              |
-| nombre        | string       | Ad name (unique)                                                    | application/x-www-form-urlencoded |
-| venta         | bool         | it indicates if the item is on sale                                 | application/x-www-form-urlencoded |
-| precio        | number       | the price of the item                                               | application/x-www-form-urlencoded |
-| tags          | array        | key words of the ad. Possible values: motor, mobile, lifestyle, work| application/x-www-form-urlencoded |
-| foto          | string       | picture of the item                                                 | application/x-www-form-urlencoded |
-
-**Response messsages**: <br />
-- 200 Success
-- 404 Not found
-- 500 Internal Server Error
-
-**Example**: <br />
-Request: <br />
-GET /api/anuncios/63b34fa205dce84ee1958152 <br />
-<img width="451" alt="image" src="https://user-images.githubusercontent.com/112942984/211225778-295a27f6-0deb-4c46-a142-5a8774777bf3.png">
-
-Response:
-```json
 {
-    "result": {
-        "_id": "63b34fa205dce84ee1958152",
-        "nombre": "cama",
-        "venta": true,
-        "tags": [],
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2M2UyZGY1ZTZkMGE3NmU2ZGRjYzVjMWUiLCJpYXQiOjE2NzU4MTc0NzB9.tzZS9W6AKErN-_lJtGbvwJGh4q6XPsVrWSn2qLR51xM",
+    "user": {
+        "_id": "63e2df5e6d0a76e6ddcc5c1e",
+        "email": "emily@gmail.com",
+        "password": "$2a$12$jMQX5Ll/2kL5Af.LsAEruuY02xfgODq3nyDwfQKDd2hi.EcKkj8D2",
         "__v": 0
     }
 }
-```
 
 
+### POST /api/users/signup
 
-### POST /api/anuncios - Add a new Ad 
+Example
 
-**Parameters**: <br />
-Parameter content-type: application/x-www-form-urlencoded
-
-| **Parameter** | **DataType** | **Description**                                                     | **Parameter type**                |
-|---------------|--------------|---------------------------------------------------------------------|-----------------------------------|
-| nombre        | string       | Ad name (unique)                                                    | application/x-www-form-urlencoded |
-| venta         | bool         | it indicates if the item is on sale                                 | application/x-www-form-urlencoded |
-| precio        | number       | the price of the item                                               | application/x-www-form-urlencoded |
-| tags          | array        | key words of the ad. Possible values: motor, mobile, lifestyle, work| application/x-www-form-urlencoded |
-| foto          | string       | picture of the item                                                 | application/x-www-form-urlencoded |
-
-**Response messsages**: <br />
-- 200 Success
-- 404 Not found
-- 500 Internal Server Error
-
-**Example**: <br />
-Request: POST /api/anuncios <br />
-<img width="467" alt="image" src="https://user-images.githubusercontent.com/112942984/211225507-93029165-bd3f-4dbf-a9b0-4779635cd1f4.png"> <br />
+Body:
+{
+    "email" : "genoveffa@gmail.com"
+    "password" : "ciel"
+}
 
 Response:
-
-```json
 {
-    "result": {
-        "nombre": "laptop mac",
-        "venta": false,
-        "tags": [],
-        "_id": "63bb598e29a77f096d8c52a2",
+    "token": "fgKhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2M2UyZGY1ZTZkMGE3NmU2ZGRjYzVjMWUiLCJpYXQiOjE2NzU4MTc0NzB9.tzZS9W6AKErN-_lJtGbvwJGh4q6XPsVrWSn2qLR61xO",
+    "user": {
+        "_id": "63e2df5e6d0a76e6ddcc56bg",
+        "email": "genoveffa@gmail.com",
+        "password": "$2a$12$dfgdg$vfvf/DwfQKDd2hi.fdbEcKkj8D2",
         "__v": 0
     }
 }
-```
+
+
+
+### GET /api/protected
+
+Headers:
+Authorization: token
+
+Response:
+example of protected request
+
 
 
 
