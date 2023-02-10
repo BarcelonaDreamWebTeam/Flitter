@@ -24,9 +24,20 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+//recognize headers of the api
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+  res.header('Access-Control-Allow-Headers', 'Content-Type');
+  next();
+});
+
 //rutas de mi api
 app.use('/api/users', require('./routes/api/users'))
 app.use("/api/protected", require('./routes/api/protected'));
+
+
+
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);

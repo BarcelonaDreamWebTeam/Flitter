@@ -25,7 +25,8 @@ function verifyToken(req, res, next) {
 
 // GET 
 router.get('/', verifyToken, function(req, res, next) {
-  res.send('example of protected request');
+  res.status(200).send({ userId: req.userId });
+  // res.send('example of protected request');
 });
 
 
