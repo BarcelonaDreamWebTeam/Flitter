@@ -95,8 +95,8 @@ router.post('/forgot-password', async (req, res) => {
       host: 'smtp.ethereal.email',
       port: 587,
       auth: {
-        user: 'laisha.glover48@ethereal.email',
-        pass: 'tFU5TsXD5q16wVSsGh'
+        user: 'treva.stracke@ethereal.email',
+        pass: 'JTpCcxFQdShhfgrEQx'
       }
     });
 
@@ -166,6 +166,21 @@ router.post('/reset-password', (req, res) => {
 });
 
 
+router.get('/:id', async(req, res , next)=> {
+
+  try{ 
+      const id = req.params.id;
+  
+      //buscar un tweet en la BD
+      const user = await User.findById(id);
+
+      res.json({result: user})
+
+  }catch (err) {
+      next(err);
+  }
+
+})
 
 
 module.exports = router;

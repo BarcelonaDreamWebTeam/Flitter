@@ -12,6 +12,8 @@ router.get('/', async (req, res, next) => {
         const tweet_id = req.query.tweet_id;
         const text = req.query.text;
         const hashtags = req.query.hashtags;
+        const date = req.query.date;
+        const likes = req.query.likes;
 
 
         const filtro = {};
@@ -31,6 +33,7 @@ router.get('/', async (req, res, next) => {
         if(text) {
             filtro.text = new RegExp("^" + text, "i");
         }
+
 
         // paginacion
         const skip = req.query.skip;

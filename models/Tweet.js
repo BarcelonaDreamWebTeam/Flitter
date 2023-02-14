@@ -7,7 +7,7 @@ const tweetSchema = mongoose.Schema({
     
     user: {type: String},//---> para que cree un indice
     tweet_id: { type: Number} ,
-    text: {type: String, index: true},
+    text: {type: String},
     likes: {type: Number},
     img: {type: String},
     hashtags: [],

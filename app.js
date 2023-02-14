@@ -24,6 +24,14 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+
+app.use((req, res, next) => {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+  next();
+});
+
 //recognize headers of the api
 app.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', '*');
@@ -37,7 +45,12 @@ app.use('/api/users', require('./routes/api/users'))
 app.use("/api/protected", require('./routes/api/protected'));
 app.use('/api/tweets', require('./routes/api/tweets'))
 
-
+app.options('/api/protected', function(req, res) {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+  res.header('Access-Control-Allow-Headers', 'authorization');
+  res.send();
+});
 
 
 app.use('/', indexRouter);
