@@ -3,6 +3,8 @@
 const express = require('express');
 const router = express.Router();
 const createError = require('http-errors');
+const Tweet= require('../../models/Tweet')
+
 
 
 //authentication: to be called when we need authorization (user must me logged in)
@@ -32,12 +34,24 @@ router.get('/', verifyToken, function(req, res, next) {
 
 //POST
 router.post ('/', verifyToken, async (req, res, next) => {
-    try{
+  try {
+    const tweetData = req.body;
+
+    //instanciar un nuevo agente en memoria 
+    const tweet = new Tweet(tweetData);
+
+    //guardarlo en base de datos
+    const tweetSaved = await tweet.save();
+
+    //responder
+   res.json({result: tweetSaved});
     
-    }catch(err){
-        next(err)
-    }
+} catch (err) {
+    next(err); 
+}
+
 })
+
 
 
 module.exports = router

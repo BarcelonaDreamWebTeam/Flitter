@@ -35,6 +35,7 @@ app.use((req, res, next) => {
 //rutas de mi api
 app.use('/api/users', require('./routes/api/users'))
 app.use("/api/protected", require('./routes/api/protected'));
+app.use('/api/tweets', require('./routes/api/tweets'))
 
 
 
