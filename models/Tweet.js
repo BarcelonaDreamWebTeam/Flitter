@@ -21,7 +21,11 @@ tweetSchema.statics.lista = function(filtro, skip, limit, fields, sort){
     query.limit(limit);
     query.skip(skip);
     query.select(fields);
-    query.sort(sort);
+    if (sort === 'popular') {
+        query.sort({ likes: 1 });
+    } else {
+        query.sort(sort);
+    }
     
     return query.exec()//----> aqui si se ejecuta la queryy y se retorna la promesa
 

@@ -31,7 +31,8 @@ router.get('/', async (req, res, next) => {
         }
 
         if(text) {
-            filtro.text = new RegExp("^" + text, "i");
+            filtro.text = new RegExp(`\\b${text}\\b`, 'ig');
+
         }
 
 
